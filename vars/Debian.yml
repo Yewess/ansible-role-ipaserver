@@ -6,7 +6,9 @@ ipaserver_packages:
     - sssd-ldap
     - expect
 
-ipaserver_base_command: ipa-server-install -U
+ipaserver_packages: '{{ _ipaserver_packages | union(["freeipa-server-dns"])
+                        if ipaserver_setup_dns else
+                        _ipaserver_packages }}'
 
 # IPA Ports Keep Alive check Post installation
 ipa_ports:
