@@ -12,7 +12,6 @@
   action: >
     {{ ansible_pkg_mgr }} name="{{ item }}" state=latest
   with_items: "{{ ipaserver_packages }}"
-  become: True
 
 - name: Free-up modnss TCP port
   include: modssl_config.yml
@@ -32,4 +31,3 @@
 
 - name: Generate HTTP Keytab for IPA Web Server
   include: ipahttp.yml
-

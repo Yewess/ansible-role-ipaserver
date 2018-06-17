@@ -12,10 +12,8 @@
     - "chown apache:apache ipa.keytab*"
   register: ipakeytab
   when: ipasetup.changed
-  become: True
 
 # Restart Apache HTTP Server to incude new keytab
 - name: Restart httpd
   service:  name=httpd state=restarted enabled=yes
   when: ipakeytab.changed
-  become: True

@@ -4,8 +4,6 @@
   lineinfile:
     dest: /etc/pam.d/common-session
     line: 'session     required      pam_mkhomedir.so skel=/etc/skel umask=0022'
-  become: true
-
 
 - name: Enable nss,pam,sssd,sudo functionality
   lineinfile:
@@ -13,7 +11,6 @@
     regexp: '^services.*'
     line: 'services = nss, pam, ssh, sudo'
     create: yes
-  become: true
   notify:
     - restart sssd
     - restart ssh
