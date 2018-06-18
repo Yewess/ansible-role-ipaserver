@@ -6,7 +6,7 @@ galaxy_info:
 
   min_ansible_version: 2.0.0
 
-  github_branch: release
+  github_branch: master
 
   platforms:
     - name: EL
@@ -20,7 +20,13 @@ galaxy_info:
       versions:
         - xenial
 
-  galaxy_tags: ['ipaserver','freeipa','install',kerberos','security','identity']
+  galaxy_tags:
+    - 'ipaserver'
+    - 'freeipa'
+    - 'install'
+    - 'kerberos'
+    - 'security'
+    - 'identity'
 
 
 dependencies: []
