@@ -34,3 +34,5 @@
     - name: Set IPA Server Install and Configuring Done
       file: dest=/etc/ipa/setup_ansible.done state=touch mode=0755
       when: "ipasetup.changed and 'Setup complete' in ipasetup.stdout "
+
+    - debug: ipasetup
