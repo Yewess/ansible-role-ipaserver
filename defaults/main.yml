@@ -19,3 +19,6 @@ ipaserver_setup_dns: False
 ipaserver_ssh_trust_dns: False
 ipaserver_setup_ntp: True
 ipaserver_ui_redirect: True
+
+# When non-empty, inventory hostname of already configured IPA master.
+ipaserver_replica_master:

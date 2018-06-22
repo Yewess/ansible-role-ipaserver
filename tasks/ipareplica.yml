@@ -1,0 +1,33 @@
+---
+
+# Refer https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/identity_management_guide/creating-the-replica
+- block:
+
+    - delegate_to: '{{ ipaserver_replica_master }}'
+      block:
+
+        - name: Create the replica information file on the master
+          debug:
+
+        - name: Copy the replica information file to the replica
+          debug:
+
+      always:
+
+        - name: Remove the replica information file from the master
+          debug:
+
+    - name: Run the IPA Replica installer
+      shell: true
+      args:
+        creates: /etc/ipa/setup_ansible.done
+      register: ipasetup
+
+  always:
+  # Mark Server Configuration Done only if successfull to ensure to skip server or client installation
+  # Using /etc/ipa/default.conf will cause issues when ipa-setup is not successfully
+  # In such case uninstall and install again
+    - name: Set IPA Server Install and Configuring Done
+      file: dest=/etc/ipa/setup_ansible.done state=touch mode=0755
+      when: "ipasetup.changed and 'Setup complete' in ipasetup.stdout "
+  become: True

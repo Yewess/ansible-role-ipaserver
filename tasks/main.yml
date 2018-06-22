@@ -23,6 +23,11 @@
 
 - name: Install IPA Server
   include: ipainstall.yml
+  when: not ipaserver_replica_master | trim | length
+
+- name: Install IPA Replica
+  include: ipareplica.yml
+  when: ipaserver_replica_master | trim | length
 
 - name: Start IPA Server
   include: ipastart.yml
