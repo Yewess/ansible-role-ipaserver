@@ -1,5 +1,9 @@
 ---
 
+- name: Gather networking information
+  setup:
+    gather_subset: network
+
 - name: Gather OS Specific Variables
   include_vars: "{{ item }}"
   with_first_found:
